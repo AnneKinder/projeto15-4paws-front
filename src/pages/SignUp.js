@@ -17,7 +17,7 @@ export default function SignUp() {
   function sendData(e) {
     e.preventDefault();
 
-    if (form.password != form.confirmp) {
+    if (form.password !== form.confirmp) {
       alert("As senhas não conferem. Por favor, redigite.");
     } else {
 

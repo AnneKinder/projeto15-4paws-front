@@ -1,18 +1,36 @@
 import styled from "styled-components";
 import logo from "../assets/paw.print.webp";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const navigate = useNavigate();
+  const [loginUser, setLoginUser] = useState({ email: "", password: "" });
 
   return (
     <ScreenSty>
       <SignInSty>
         <h1>4PAWS</h1>
         <form>
-          <input name="email" type="email" placeholder="Email" required />
-          <input name="password" type="password" placeholder="Senha" required />
-          <button type="submit"> Cadastrar </button>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            onChange={(email) =>
+              setLoginUser({ ...loginUser, email: email.target.value })
+            }
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Senha"
+            required
+            onChange={(password) =>
+              setLoginUser({ ...loginUser, password: password.target.value })
+            }
+          />
+          <button type="submit">Entrar</button>
         </form>
         <p onClick={() => navigate("/sign-up")}>
           Já tem uma conta? Entre agora!
