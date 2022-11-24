@@ -43,10 +43,8 @@ export default function SignUp() {
   }
 
   return (
-    <>
+    <ScreenSty>
       <SignUpSty>
-
-      <img src={logo} alt="logo" onClick={() => navigate("/")} />
       <form onSubmit={sendData}>
         <input
           name="name"
@@ -86,20 +84,27 @@ export default function SignUp() {
       </form>
       <p onClick={() => navigate("/")}>Já tem uma conta? Entre agora!</p>
     </SignUpSty>
-    </>
+    <SidebarSty>
+    <img src={logo} alt="logo" onClick={() => navigate("/")} />
+    </SidebarSty>
+    </ScreenSty>
   )
   
  
 }
 
 const ScreenSty = styled.div`
+display: flex;
+width: 100vw;
 `
 
 const SidebarSty = styled.div`
+width: 50vw;
 background-color: #404eed;
 `
 
 const SignUpSty = styled.div`
+  width: 50vw;
   display: flex;
   flex-direction: column;
   align-items: center;

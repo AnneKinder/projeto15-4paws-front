@@ -54,7 +54,6 @@ body{
 	width: 100vw;
   	min-height: 100vw;
     box-sizing: border-box;
-	margin-top:89px;
 	font-family: 'Patrick Hand SC';
 }
 
