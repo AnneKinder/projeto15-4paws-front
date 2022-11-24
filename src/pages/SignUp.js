@@ -45,6 +45,7 @@ export default function SignUp() {
   return (
     <ScreenSty>
       <SignUpSty>
+        <h1>4PAWS</h1>
       <form onSubmit={sendData}>
         <input
           name="name"
@@ -94,16 +95,26 @@ export default function SignUp() {
 }
 
 const ScreenSty = styled.div`
-display: flex;
-width: 100vw;
+  display: flex;
+  width: 100vw;
+  height:100vw;
 `
 
 const SidebarSty = styled.div`
-width: 50vw;
-background-color: #404eed;
+  width: 50vw;
+  height: 100vw;
+  background-color: #404eed;
+  display: flex;
+  justify-content: center;
+  
+  img{
+    height:400px;
+    margin-top: 11vw;
+  }
 `
 
 const SignUpSty = styled.div`
+  margin-top: 10vw;
   width: 50vw;
   display: flex;
   flex-direction: column;
@@ -111,10 +122,15 @@ const SignUpSty = styled.div`
   font-family: "Lexend Deca", sans-serif;
   padding: 50px 0 100px 0;
 
-  img {
-    width: 190px;
-    padding: 30px;
+  h1{
+  font-family: 'Nerko One';
+  font-weight: 400;
+  font-size: 55px;
+  line-height: 39px;
+  color: black;
+  margin-bottom: 3vw;
   }
+
   form {
     display: flex;
     flex-direction: column;
@@ -137,7 +153,7 @@ const SignUpSty = styled.div`
     height: 45px;
     left: 36px;
     top: 381px;
-    background: #a328d6;
+    background: #404eed;
     border-radius: 4.63636px;
     font-weight: 400;
     font-size: 20.976px;
