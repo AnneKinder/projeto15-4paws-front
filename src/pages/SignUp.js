@@ -1,4 +1,13 @@
+import Navbar from "../components/Navbar.js";
+
 export default function SignUp() {
   console.log("sign-up page");
-  return <div> Sign up </div>;
+  return (
+    <>
+      <Navbar />
+      <div> Sign up </div>;
+    </>
+  )
+  
+ 
 }
