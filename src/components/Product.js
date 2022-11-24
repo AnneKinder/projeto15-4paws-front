@@ -1,31 +1,31 @@
 import styled from "styled-components"
 
 export default function Product(props){
+    const {image, title, subtitle} = props
 
-
-    
     return(
         <ProductSty>
-        <img src="https://static.petnautasloja.com.br/public/nunesagropecuaria/imagens/produtos/thumbs/royal-canin-mini-starter-mother-babydog-1kg-6377788ec0c9d.jpg" alt="img-product" />
-        <h3>Ração Royal Canin</h3>
-        <h4>+ proteico</h4>
+        <img src={image} alt="img-product" />
+        <h3>{title}</h3>
+        <h4>{subtitle}</h4>
+        <div></div>
         </ProductSty>
     )
 }
 
 const ProductSty = styled.div`
     width: 200px;
-    height:300px;
+    height:250px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     border: solid 1px lightgrey;
-    margin:15px 15px 0 0 ;
+    margin:18px 18px 0 0 ;
     background: white;
     border-radius: 10px;
 
     img{
-        height:170px;
+        height:180px;
     }
 
     h3{
