@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar.js";
 import Product from "../components/Product.js";
 
+
 export default function Home() {
   return (
     <>

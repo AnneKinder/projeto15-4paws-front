@@ -6,7 +6,6 @@ import Home from "./pages/Home.js";
 // import Cart from "./pages/Cart.js";
 
 
-
 function App() {
   return (
     <BrowserRouter>
