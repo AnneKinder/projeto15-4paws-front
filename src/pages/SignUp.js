@@ -170,7 +170,7 @@ const SignUpSty = styled.div`
     font-size: 13.976px;
     line-height: 17px;
     text-align: center;
-    text-decoration-line: underline;
-    color: white;
+    text-decoration-line: none;
+    color: #404eed;
   }
 `;
