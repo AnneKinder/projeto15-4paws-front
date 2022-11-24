@@ -52,7 +52,6 @@ table {
 
 body{
 	width: 100vw;
-  	min-height: 100vw;
     box-sizing: border-box;
 	font-family: 'Patrick Hand SC';
 }
