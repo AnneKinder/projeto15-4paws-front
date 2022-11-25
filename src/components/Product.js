@@ -1,16 +1,26 @@
+import React from "react";
 import styled from "styled-components"
+import { useState } from "react";
+
 
 export default function Product(props){
     const {image, title, subtitle} = props
 
+    const [itemCounter, setItemCounter] = useState(0)
+
+    function addProduct(){
+        setItemCounter(itemCounter+1)
+    }
+
+
     return(
         <ProductSty>
-        <div className="counter">c</div>
-        <img src={image} alt="img-product" />
-        <h3>{title}</h3>
-        <h4>{subtitle}</h4>
-        <button>+</button>
-       
+        {itemCounter!=0 ? <div className="counter">{itemCounter}</div> : ""}
+            
+            <img src={image} alt="img-product" />
+            <h3>{title}</h3>
+            <h4>{subtitle}</h4>
+            <button onClick={() => addProduct()}>+</button>
         </ProductSty>
     )
 }
@@ -62,7 +72,7 @@ const ProductSty = styled.div`
         border-radius: 10px;
         background-color: orangered;
         color: white;
-        font-size: 25px;
+        font-size: 22px;
         justify-content: center;
         align-items: center;
         margin-left: 178px;
