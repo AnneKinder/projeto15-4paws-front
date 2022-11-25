@@ -1,6 +1,9 @@
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <NavbarSty>
       <div className="left">
@@ -11,8 +14,15 @@ export default function Navbar() {
         <p>4PAWS</p>
       </div>
       <div className="right">
-      <ion-icon name="cart"></ion-icon>
-      <ion-icon name="power"></ion-icon>
+        <Link to="/home">
+          <ion-icon name="home"></ion-icon>
+        </Link>
+        <Link to="/cart">
+          <ion-icon name="cart"></ion-icon>
+        </Link>
+        <Link to="/">
+          <ion-icon name="power"></ion-icon>
+        </Link>
       </div>
     </NavbarSty>
   );
@@ -28,12 +38,13 @@ const NavbarSty = styled.div`
   left: 0px;
   top: 0px;
   background: #404eed;
-  font-family: 'Nerko One';
+  font-family: "Nerko One";
   font-weight: 400;
   font-size: 42px;
   line-height: 39px;
-  color: #FCFCFC;
-
+  color: #fcfcfc;
+  z-index: 1;
+  
   img {
     height: 65px;
     width: 65px;
@@ -41,17 +52,20 @@ const NavbarSty = styled.div`
     margin-right: 17px;
   }
 
-  .left{
+  .left {
     display: flex;
     align-items: center;
   }
 
-  .right{
+  .right {
     display: flex;
     align-items: center;
-    width:85px;
+    width: 140px;
     justify-content: space-between;
     font-size: 35px;
   }
 
+  ion-icon {
+    color: white;
+  }
 `;

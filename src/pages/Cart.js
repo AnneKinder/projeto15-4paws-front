@@ -1,4 +1,4 @@
-import NavbarSty from "../components/Navbar.js";
+import Navbar from "../components/Navbar.js";
 import styled from "styled-components";
 import CartList from "../components/CartItens.js";
 import { useState } from "react";
@@ -8,27 +8,27 @@ export default function Cart() {
     {
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
       title: "Ração Royal Canin",
-      price: "2.00",
+      price: 2.00,
     },
     {
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
       title: "Ração Royal Canin",
-      price: "00.00",
+      price: 12.00,
     },
     {
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
       title: "Ração Royal Canin",
-      price: "00.00",
+      price: 13.43,
     },
     {
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
       title: "Ração Royal Canin",
-      price: "00.00",
+      price: 21.25,
     },
     {
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
       title: "Ração Royal Canin",
-      price: "00.00",
+      price: 14.35,
     },
   ];
   const [sale, setSale] = useState({
@@ -38,11 +38,11 @@ export default function Cart() {
     city: "",
     state: "",
   });
-  console.log(sale);
+  //console.log(sale);
 
   return (
     <>
-      <NavbarSty />
+      <Navbar />
       <ProdDataSty>
         <ProdSty>
           {itensCart.map((d) => (
