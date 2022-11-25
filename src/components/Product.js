@@ -5,17 +5,20 @@ export default function Product(props){
 
     return(
         <ProductSty>
+        <div className="counter">c</div>
         <img src={image} alt="img-product" />
         <h3>{title}</h3>
         <h4>{subtitle}</h4>
-        <div></div>
+        <button>+</button>
+       
         </ProductSty>
     )
 }
 
 const ProductSty = styled.div`
+    box-sizing: border-box;
     width: 200px;
-    height:250px;
+    height:280px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -25,7 +28,9 @@ const ProductSty = styled.div`
     border-radius: 10px;
 
     img{
+        object-fit: contain;
         height:180px;
+    
     }
 
     h3{
@@ -41,6 +46,28 @@ const ProductSty = styled.div`
         margin-bottom: 5px;
     }
 
+    button{
+        background-color: #404eed;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        margin: 4px;
+    }
+
+
+    .counter{
+        display: flex;
+        width: 20px;
+        border-radius: 10px;
+        background-color: orangered;
+        color: white;
+        font-size: 25px;
+        justify-content: center;
+        align-items: center;
+        margin-left: 178px;
+        font-weight: 700;
+    }
 
 `
 

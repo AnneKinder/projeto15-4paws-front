@@ -52,6 +52,7 @@ export default function Home() {
           {catArray.map((d) => <Product image={d.image} title={d.title} subtitle={d.subtitle} />
           )}
         </ListSty>
+        
       </HomeSty>
     </>
   );
@@ -75,7 +76,7 @@ const HomeSty = styled.div`
 
 const ListSty = styled.div`
   width: 1000px;
-  background-color: lightcyan;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom:30px;
 `;
