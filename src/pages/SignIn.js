@@ -2,16 +2,31 @@ import styled from "styled-components";
 import logo from "../assets/paw.print.webp";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+//import axios from "axios";
 
 export default function SignIn() {
   const navigate = useNavigate();
   const [loginUser, setLoginUser] = useState({ email: "", password: "" });
 
+  function handleSignIn(e) {
+    e.preventDefault();
+
+    /*axios
+      .post("http://localhost:5000/", loginUser);
+      .post(`${BASE_URI}/`, loginUser);
+      .then((res) => {
+        navigate("/home");
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });*/
+  }
+
   return (
     <ScreenSty>
       <SignInSty>
         <h1>4PAWS</h1>
-        <form>
+        <form onSubmit={handleSignIn}>
           <input
             name="email"
             type="email"

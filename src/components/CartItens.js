@@ -1,7 +1,19 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function CartList(props) {
   const { image, title, price } = props;
+  const [quantity, setQuantity] = useState(1);
+
+  function quantityMinus() {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  }
+
+  function quantityPlus() {
+    setQuantity(quantity + 1);
+  }
 
   return (
     <ContainerItem>
@@ -9,9 +21,9 @@ export default function CartList(props) {
       <h1>{title}</h1>
       <ContChanges>
         <div>
-          <button>-</button>
-          <h2>00</h2>
-          <button>+</button>
+          <button onClick={quantityMinus}>-</button>
+          <h2>{quantity}</h2>
+          <button onClick={quantityPlus}>+</button>
         </div>
         <h3>R${price}</h3>
       </ContChanges>
