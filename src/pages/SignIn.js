@@ -35,6 +35,7 @@ export default function SignIn() {
             onChange={(email) =>
               setLoginUser({ ...loginUser, email: email.target.value })
             }
+            value={loginUser.email}
           />
           <input
             name="password"
@@ -44,6 +45,7 @@ export default function SignIn() {
             onChange={(password) =>
               setLoginUser({ ...loginUser, password: password.target.value })
             }
+            value={loginUser.password}
           />
           <button type="submit">Entrar</button>
         </form>

@@ -1,6 +1,7 @@
 import NavbarSty from "../components/Navbar.js";
 import styled from "styled-components";
 import CartList from "../components/CartItens.js";
+import { useState } from "react";
 
 export default function Cart() {
   const itensCart = [
@@ -30,6 +31,14 @@ export default function Cart() {
       price: "00.00",
     },
   ];
+  const [sale, setSale] = useState({
+    address: "",
+    number: "",
+    cep: "",
+    city: "",
+    state: "",
+  });
+  console.log(sale);
 
   return (
     <>
@@ -48,16 +57,49 @@ export default function Cart() {
                 type="text"
                 placeholder="Endereço"
                 required
+                onChange={(address) =>
+                  setSale({ ...sale, address: address.target.value })
+                }
+                value={sale.address}
               />
               <input
                 name="number"
                 type="number"
                 placeholder="Número"
                 required
+                onChange={(number) =>
+                  setSale({ ...sale, number: number.target.value })
+                }
+                value={sale.number}
               />
-              <input name="cep" type="number" placeholder="CEP" required />
-              <input name="city" type="text" placeholder="Cidade" required />
-              <input name="state" type="text" placeholder="Estado" required />
+              <input
+                name="cep"
+                type="number"
+                placeholder="CEP"
+                required
+                onChange={(cep) => setSale({ ...sale, cep: cep.target.value })}
+                value={sale.cep}
+              />
+              <input
+                name="city"
+                type="text"
+                placeholder="Cidade"
+                required
+                onChange={(city) =>
+                  setSale({ ...sale, city: city.target.value })
+                }
+                value={sale.city}
+              />
+              <input
+                name="state"
+                type="text"
+                placeholder="Estado"
+                required
+                onChange={(state) =>
+                  setSale({ ...sale, state: state.target.value })
+                }
+                value={sale.state}
+              />
               <h1>Valor Total: R$000.00</h1>
               <button>Finalizar Compra</button>
             </form>
