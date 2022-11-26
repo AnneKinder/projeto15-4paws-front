@@ -15,8 +15,7 @@ export default function Product(props){
 
     return(
         <ProductSty>
-        {itemCounter!=0 ? <div className="counter">{itemCounter}</div> : ""}
-            
+            {itemCounter!=0 ? <div className="counter">{itemCounter}</div> : ""}
             <img src={image} alt="img-product" />
             <h3>{title}</h3>
             <h4>{subtitle}</h4>
@@ -40,6 +39,7 @@ const ProductSty = styled.div`
     img{
         object-fit: contain;
         height:180px;
+        margin-top: 10px;
     
     }
 
