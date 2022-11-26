@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 import logo from "../assets/paw.print.webp"
 
 export default function SignUp() {
@@ -24,14 +25,12 @@ export default function SignUp() {
       alert("Usuário criado :)")
 
 
-      // axios
-      //   .post("http://localhost:5000/sign-up", form)
-      //   .then((res) => {
-      //     alert("Usuário criado");
-      //     navigate("/");
-      //   })
-      //   .catch((err) => alert(err.response.data));
-
+      axios.post("http://localhost:5000/sign-up", form)
+        .then((res) => {
+          alert("Usuário criado");
+          navigate("/");
+        })
+        .catch((err) => alert(err.response.data));
     }
   }
 
