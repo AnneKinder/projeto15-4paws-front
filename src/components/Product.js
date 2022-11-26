@@ -4,12 +4,19 @@ import { useState } from "react";
 
 
 export default function Product(props){
-    const {image, title, subtitle} = props
+    const {image, title, subtitle, price} = props
 
     const [itemCounter, setItemCounter] = useState(0)
+    const [tempCart, setTempCart] = useState([])
 
     function addProduct(){
         setItemCounter(itemCounter+1)
+        setTempCart([...tempCart, {
+            title: title,
+            // price: ,
+            // qt:
+
+        }])
     }
 
 
@@ -19,6 +26,7 @@ export default function Product(props){
             <img src={image} alt="img-product" />
             <h3>{title}</h3>
             <h4>{subtitle}</h4>
+            <h5>R$ {price}</h5>
             <button onClick={() => addProduct()}>+</button>
         </ProductSty>
     )
@@ -26,8 +34,8 @@ export default function Product(props){
 
 const ProductSty = styled.div`
     box-sizing: border-box;
-    width: 200px;
-    height:280px;
+    width: 220px;
+    height:300px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -40,7 +48,6 @@ const ProductSty = styled.div`
         object-fit: contain;
         height:180px;
         margin-top: 10px;
-    
     }
 
     h3{
@@ -54,6 +61,13 @@ const ProductSty = styled.div`
         font-size: 22px;
         color: grey;
         margin-bottom: 5px;
+    }
+
+    h5{
+        text-align: center;
+        font-size: 23px;
+        color: black;
+        margin-bottom: 5px; 
     }
 
     button{

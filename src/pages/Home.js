@@ -10,12 +10,14 @@ export default function Home() {
         "https://static.petnautasloja.com.br/public/nunesagropecuaria/imagens/produtos/thumbs/racao-guabi-natural-para-caes-adultos-racas-medias-sabor-frango-e-arroz-12kg-1kg-gratis-63766fbaa1ce1.jpg",
       title: "Ração Royal Canin",
       subtitle: "+ light",
+      price: "40,00"
     },
     {
       image:
         "https://static.petnautasloja.com.br/public/nunesagropecuaria/imagens/produtos/thumbs/comedouro-funcional-dog-lento-250ml-9962.png",
       title: "Pote alto",
       subtitle: "+ ergonomia",
+      price: "15,00"
     },
   ];
 
@@ -25,12 +27,14 @@ export default function Home() {
         "https://static.petnautasloja.com.br/public/nunesagropecuaria/imagens/produtos/thumbs/arranhador-poste-sisal-grande-unipet-8245.jpg",
       title: "Arranhador",
       subtitle: "cizal",
+      price: "55,00"
     },
     {
       image:
         "https://static.petnautasloja.com.br/public/nunesagropecuaria/imagens/produtos/thumbs/brinquedo-varinha-pesca-gatinho-catmypet-10736.jpg",
       title: "Varinha com pena",
       subtitle: "diversão garantida",
+      price: "22,00"
     },
   ];
 
@@ -42,14 +46,14 @@ export default function Home() {
           <h2> Doguinhos </h2>
         </div>
         <ListSty>
-          {dogArray.map((d) => <Product image={d.image} title={d.title} subtitle={d.subtitle} />
+          {dogArray.map((d) => <Product image={d.image} title={d.title} subtitle={d.subtitle} price={d.price}/>
           )}
         </ListSty>
         <div className="subtitle">
           <h2> Gatinhos </h2>
         </div>
         <ListSty>
-          {catArray.map((d) => <Product image={d.image} title={d.title} subtitle={d.subtitle} />
+          {catArray.map((c) => <Product image={c.image} title={c.title} subtitle={c.subtitle} price={c.price}/>
           )}
         </ListSty>
         
