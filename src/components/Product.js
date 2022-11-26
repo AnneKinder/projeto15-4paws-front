@@ -1,24 +1,29 @@
 import React from "react";
 import styled from "styled-components"
 import { useState } from "react";
+import { AuthContext } from "../contexts/auth.js";
 
 
-export default function Product(props){
+export function addToCart(){
+    console.log("added to cart")
+
+   
+}
+
+
+export function Product(props){
     const {image, title, subtitle, price} = props
 
     const [itemCounter, setItemCounter] = useState(0)
-    const [tempCart, setTempCart] = useState([])
+   
 
     function addProduct(){
         setItemCounter(itemCounter+1)
-        setTempCart([...tempCart, {
-            title: title,
-            // price: ,
-            // qt:
-
-        }])
     }
 
+
+
+   
 
     return(
         <ProductSty>

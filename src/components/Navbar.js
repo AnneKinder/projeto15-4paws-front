@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { addToCart } from "./Product.js";
 
 export default function Navbar() {
-  const navigate = useNavigate();
 
   return (
     <NavbarSty>
@@ -18,7 +18,7 @@ export default function Navbar() {
           <ion-icon name="home"></ion-icon>
         </Link>
         <Link to="/cart">
-          <ion-icon name="cart"></ion-icon>
+          <ion-icon name="cart" onClick={()=> addToCart()}></ion-icon>
         </Link>
         <Link to="/">
           <ion-icon name="power"></ion-icon>

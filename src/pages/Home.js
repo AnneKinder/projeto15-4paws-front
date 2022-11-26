@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar.js";
-import Product from "../components/Product.js";
+import {Product, addToCart} from "../components/Product.js";
 
 export default function Home() {
     
@@ -46,14 +46,14 @@ export default function Home() {
           <h2> Doguinhos </h2>
         </div>
         <ListSty>
-          {dogArray.map((d) => <Product image={d.image} title={d.title} subtitle={d.subtitle} price={d.price}/>
+          {dogArray.map((d,id) => <Product key={id} image={d.image} title={d.title} subtitle={d.subtitle} price={d.price}/>
           )}
         </ListSty>
         <div className="subtitle">
           <h2> Gatinhos </h2>
         </div>
         <ListSty>
-          {catArray.map((c) => <Product image={c.image} title={c.title} subtitle={c.subtitle} price={c.price}/>
+          {catArray.map((c,id) => <Product key={id} image={c.image} title={c.title} subtitle={c.subtitle} price={c.price}/>
           )}
         </ListSty>
         
