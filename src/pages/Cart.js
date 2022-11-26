@@ -1,36 +1,45 @@
 import Navbar from "../components/Navbar.js";
 import styled from "styled-components";
 import CartList from "../components/CartItens.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../contexts/auth.js";
 
 export default function Cart() {
+  const {user} = useContext(AuthContext);
+  console.log(user);
   const itensCart = [
     {
+      id: "1",
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
       title: "Ração Royal Canin",
-      price: 2.00,
+      price: 2.0,
     },
     {
+      id: "2",
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin",
-      price: 12.00,
+      title: "Ração Royal Canin 1",
+      price: 12.0,
     },
     {
+      id: "3",
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin",
+      title: "Ração Royal Canin 2",
       price: 13.43,
     },
     {
+      id: "4",
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin",
+      title: "Ração Royal Canin 3",
       price: 21.25,
     },
     {
+      id: "5",
       image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin",
+      title: "Ração Royal Canin 4",
       price: 14.35,
     },
   ];
+
   const [sale, setSale] = useState({
     address: "",
     number: "",
@@ -46,7 +55,13 @@ export default function Cart() {
       <ProdDataSty>
         <ProdSty>
           {itensCart.map((d) => (
-            <CartList image={d.image} title={d.title} price={d.price} />
+            <CartList
+              key={d.id}
+              id={d.id}
+              image={d.image}
+              title={d.title}
+              price={d.price}
+            />
           ))}
         </ProdSty>
         <ContainerData>

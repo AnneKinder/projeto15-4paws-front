@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function CartList(props) {
   const { image, title, price } = props;
   const [quantity, setQuantity] = useState(1);
   const [newPrice, setNewPrice] = useState(price);
-  console.log(newPrice);
 
   function quantityMinus() {
     if (quantity > 1) {
@@ -26,9 +25,13 @@ export default function CartList(props) {
       <ContChanges>
         <ion-icon name="trash-outline"></ion-icon>
         <CountSty>
-          <button onClick={quantityMinus}>-</button>
+          <button onClick={() => quantityMinus()}>
+            -
+          </button>
           <h2>{quantity}</h2>
-          <button onClick={quantityPlus}>+</button>
+          <button onClick={() => quantityPlus()}>
+            +
+          </button>
         </CountSty>
         <h3>R${newPrice.toFixed(2)}</h3>
       </ContChanges>
