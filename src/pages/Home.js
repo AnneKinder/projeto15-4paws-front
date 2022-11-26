@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar.js";
-import {Product, addToCart} from "../components/Product.js";
+import {Product} from "../components/Product.js";
 
 export default function Home() {
     
@@ -42,6 +42,7 @@ export default function Home() {
     <>
       <Navbar />
       <HomeSty>
+        <GoCart>COMPRAR!</GoCart>
         <div className="subtitle">
           <h2> Doguinhos </h2>
         </div>
@@ -76,6 +77,7 @@ const HomeSty = styled.div`
   h2 {
     font-size: 38px;
   }
+
 `;
 
 const ListSty = styled.div`
@@ -84,3 +86,22 @@ const ListSty = styled.div`
   flex-wrap: wrap;
   margin-bottom:30px;
 `;
+
+const GoCart = styled.div`
+  background-color: #404eed;
+  height: 100px;
+  width:100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  top:120px;
+  right:50px;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  border: 5px #27AAE1 solid;
+  cursor: pointer;
+`

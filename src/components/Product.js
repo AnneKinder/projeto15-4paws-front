@@ -4,11 +4,12 @@ import { useState } from "react";
 import { AuthContext } from "../contexts/auth.js";
 
 
-export function addToCart(){
-    console.log("added to cart")
+// export function addToCart(){
+//     // const {addProduct, setAddProduct } = React.useContext(AuthContext); 
+//     console.log("added to cart")
 
    
-}
+// }
 
 
 export function Product(props){
@@ -82,6 +83,7 @@ const ProductSty = styled.div`
         font-size: 16px;
         font-weight: 700;
         margin: 4px;
+        cursor: pointer;
     }
 
 
