@@ -5,10 +5,13 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { AuthContext } from "../contexts/auth.js";
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Home() {
   const {tempCart } = React.useContext(AuthContext); 
+
+  const navigate = useNavigate()
 
   const [dogArray, setDogArray] = useState([])
   const [catArray, setCatArray] = useState([])
@@ -27,11 +30,20 @@ export default function Home() {
   }, []);
 
 
+  function sendTempCart(){
+    axios.post("http://localhost:5000/home", tempCart)
+      .then(console.log(navigate("/cart")))
+      .catch((err)=> console.log(err.response.data))
+
+
+
+  }
+
   return (
     <>
       <Navbar />
       <HomeSty>
-        <GoCart onClick={()=>console.log(tempCart)}>COMPRAR!</GoCart>
+        <GoCart onClick={()=>sendTempCart()}>COMPRAR!</GoCart>
         <div className="subtitle">
           <h2> Doguinhos </h2>
         </div>
