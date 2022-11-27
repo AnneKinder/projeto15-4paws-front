@@ -3,8 +3,12 @@ import Navbar from "../components/Navbar.js";
 import {Product} from "../components/Product.js";
 import { useState, useEffect } from 'react';
 import axios from 'axios'
+import { AuthContext } from "../contexts/auth.js";
+import React from "react";
+
 
 export default function Home() {
+  const {tempCart } = React.useContext(AuthContext); 
 
   const [dogArray, setDogArray] = useState([])
   const [catArray, setCatArray] = useState([])
@@ -27,7 +31,7 @@ export default function Home() {
     <>
       <Navbar />
       <HomeSty>
-        <GoCart>COMPRAR!</GoCart>
+        <GoCart onClick={()=>console.log(tempCart)}>COMPRAR!</GoCart>
         <div className="subtitle">
           <h2> Doguinhos </h2>
         </div>

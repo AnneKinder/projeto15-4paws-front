@@ -1,104 +1,124 @@
 import React from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 import { useState } from "react";
 import { AuthContext } from "../contexts/auth.js";
 
+export function addToCart() {
+  console.log("added to cart");
+}
 
-// export function addToCart(){
-//     // const {addProduct, setAddProduct } = React.useContext(AuthContext); 
-//     console.log("added to cart")
+export function Product(props) {
+  const { image, title, subtitle, price } = props;
 
-   
-// }
+  const [itemCounter, setItemCounter] = useState(0);
+  const { tempCart, setTempCart } = React.useContext(AuthContext);
+
+  function addProduct(image, title, price) {
+    setItemCounter(itemCounter + 1);
+    
+
+    const exists = (element) => element.title=== title;
+
+    if(tempCart.some(exists)){
+        console.log("já tem")
 
 
-export function Product(props){
-    const {image, title, subtitle, price} = props
-
-    const [itemCounter, setItemCounter] = useState(0)
-   
-
-    function addProduct(){
-        setItemCounter(itemCounter+1)
+        
+    }else{
+        setTempCart([
+            ...tempCart,
+            {
+              image: image,
+              title: title,
+              price: price,
+              qt: 1,
+            },
+          ])
     }
 
-
-
    
 
-    return(
-        <ProductSty>
-            {itemCounter!=0 ? <div className="counter">{itemCounter}</div> : ""}
-            <img src={image} alt="img-product" />
-            <h3>{title}</h3>
-            <h4>{subtitle}</h4>
-            <h5>R$ {price}</h5>
-            <button onClick={() => addProduct()}>+</button>
-        </ProductSty>
-    )
+
+
+
+// checks whether an element is even
+// const jatem = (element) => element.title=== title;
+
+// console.log(tempCart.some(jatem));
+// expected output: true
+
+  }
+
+  return (
+    <ProductSty>
+      {itemCounter !== 0 ? <div className="counter">{itemCounter}</div> : ""}
+      <img src={image} alt="img-product" />
+      <h3>{title}</h3>
+      <h4>{subtitle}</h4>
+      <h5>R$ {price}</h5>
+      <button onClick={() => addProduct(image, title, price)}>+</button>
+    </ProductSty>
+  );
 }
 
 const ProductSty = styled.div`
-    box-sizing: border-box;
-    width: 220px;
-    height:300px;
+  box-sizing: border-box;
+  width: 220px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: solid 1px lightgrey;
+  margin: 18px 18px 0 0;
+  background: white;
+  border-radius: 10px;
+
+  img {
+    object-fit: contain;
+    height: 180px;
+    margin-top: 10px;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  h4 {
+    text-align: center;
+    font-size: 22px;
+    color: grey;
+    margin-bottom: 5px;
+  }
+
+  h5 {
+    text-align: center;
+    font-size: 23px;
+    color: black;
+    margin-bottom: 5px;
+  }
+
+  button {
+    background-color: #404eed;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 4px;
+    cursor: pointer;
+  }
+
+  .counter {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border: solid 1px lightgrey;
-    margin:18px 18px 0 0 ;
-    background: white;
+    width: 20px;
     border-radius: 10px;
-
-    img{
-        object-fit: contain;
-        height:180px;
-        margin-top: 10px;
-    }
-
-    h3{
-        text-align: center;
-        font-size: 26px;
-        font-weight: 700;
-    }
-
-    h4{
-        text-align: center;
-        font-size: 22px;
-        color: grey;
-        margin-bottom: 5px;
-    }
-
-    h5{
-        text-align: center;
-        font-size: 23px;
-        color: black;
-        margin-bottom: 5px; 
-    }
-
-    button{
-        background-color: #404eed;
-        border-radius: 5px;
-        color: white;
-        font-size: 16px;
-        font-weight: 700;
-        margin: 4px;
-        cursor: pointer;
-    }
-
-
-    .counter{
-        display: flex;
-        width: 20px;
-        border-radius: 10px;
-        background-color: orangered;
-        color: white;
-        font-size: 22px;
-        justify-content: center;
-        align-items: center;
-        margin-left: 178px;
-        font-weight: 700;
-    }
-
-`
-
+    background-color: orangered;
+    color: white;
+    font-size: 22px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 178px;
+    font-weight: 700;
+  }
+`;
