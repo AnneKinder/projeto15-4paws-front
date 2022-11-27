@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar.js";
-import {Product} from "../components/Product.js";
-import { useState, useEffect } from 'react';
-import axios from 'axios'
+import { Product } from "../components/Product.js";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { AuthContext } from "../contexts/auth.js";
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 
-
 export default function Home() {
-  const {tempCart } = React.useContext(AuthContext); 
+  const { tempCart } = React.useContext(AuthContext);
+
+  const navigate = useNavigate()
 
   const navigate = useNavigate()
 
@@ -18,13 +19,13 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/home", 
-      // config
+      .get(
+        "http://localhost:5000/home"
+        // config
       )
       .then((res) => {
         setDogArray(res.data.dogProds);
         setCatArray(res.data.catProds);
-
       })
       .catch((err) => console.log(err.response.data));
   }, []);
@@ -48,17 +49,30 @@ export default function Home() {
           <h2> Doguinhos </h2>
         </div>
         <ListSty>
-          {dogArray.map((d,id) => <Product key={id} image={d.image} title={d.title} subtitle={d.subtitle} price={d.price}/>
-          )}
+          {dogArray.map((d, id) => (
+            <Product
+              key={id}
+              image={d.image}
+              title={d.title}
+              subtitle={d.subtitle}
+              price={d.price}
+            />
+          ))}
         </ListSty>
         <div className="subtitle">
           <h2> Gatinhos </h2>
         </div>
         <ListSty>
-          {catArray.map((c,id) => <Product key={id} image={c.image} title={c.title} subtitle={c.subtitle} price={c.price}/>
-          )}
+          {catArray.map((c, id) => (
+            <Product
+              key={id}
+              image={c.image}
+              title={c.title}
+              subtitle={c.subtitle}
+              price={c.price}
+            />
+          ))}
         </ListSty>
-        
       </HomeSty>
     </>
   );
@@ -78,31 +92,30 @@ const HomeSty = styled.div`
   h2 {
     font-size: 38px;
   }
-
 `;
 
 const ListSty = styled.div`
   width: 1000px;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 `;
 
 const GoCart = styled.div`
   background-color: #404eed;
   height: 100px;
-  width:100px;
+  width: 100px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   position: fixed;
-  top:120px;
-  right:50px;
+  top: 120px;
+  right: 50px;
   color: white;
   font-size: 22px;
   font-weight: 700;
-  border: 5px #27AAE1 solid;
+  border: 5px #27aae1 solid;
   cursor: pointer;
-`
+`;

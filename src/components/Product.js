@@ -27,8 +27,7 @@ export function Product(props) {
 
           return obj;
         })
-      )
-
+      );
     } else {
       setTempCart([
         ...tempCart,

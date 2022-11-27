@@ -1,21 +1,43 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
+import { AuthContext } from "../contexts/auth";
 
 export default function CartList(props) {
-  const { image, title, price } = props;
-  const [quantity, setQuantity] = useState(1);
-  const [newPrice, setNewPrice] = useState(price);
+  const { tempCart, setTempCart } = useContext(AuthContext);
+  const { image, title, price, qt } = props;
 
-  function quantityMinus() {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-      setNewPrice(newPrice - price);
+  function quantityPlus(title, qt) {
+    const exists = (element) => element.title === title;
+
+    if (tempCart.some(exists)) {
+      setTempCart(
+        tempCart.map((obj) => {
+          if (obj.title === title) {
+            return { ...obj, qt: qt + 1 };
+          }
+          return obj;
+        })
+      );
     }
   }
 
-  function quantityPlus() {
-    setQuantity(quantity + 1);
-    setNewPrice(newPrice + price);
+  function quantityMinus(title, qt) {
+    const exists = (element) => element.title === title;
+
+    if (tempCart.some(exists) && qt > 1) {
+      setTempCart(
+        tempCart.map((obj) => {
+          if (obj.title === title) {
+            return { ...obj, qt: qt - 1 };
+          }
+          return obj;
+        })
+      );
+    }
+  }
+
+  function deleteProduct(title) {
+    setTempCart(tempCart.filter((item) => item.title !== title));
   }
 
   return (
@@ -23,17 +45,16 @@ export default function CartList(props) {
       <img src={image} alt="img-product" />
       <h1>{title}</h1>
       <ContChanges>
-        <ion-icon name="trash-outline"></ion-icon>
+        <ion-icon
+          name="trash-outline"
+          onClick={() => deleteProduct(title)}
+        ></ion-icon>
         <CountSty>
-          <button onClick={() => quantityMinus()}>
-            -
-          </button>
-          <h2>{quantity}</h2>
-          <button onClick={() => quantityPlus()}>
-            +
-          </button>
+          <button onClick={() => quantityMinus(title, qt)}>-</button>
+          <h2>{qt}</h2>
+          <button onClick={() => quantityPlus(title, qt)}>+</button>
         </CountSty>
-        <h3>R${newPrice.toFixed(2)}</h3>
+        <h3>R${price}</h3>
       </ContChanges>
     </ContainerItem>
   );

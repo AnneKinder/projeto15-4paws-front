@@ -5,40 +5,9 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/auth.js";
 
 export default function Cart() {
-  const {user} = useContext(AuthContext);
-  console.log(user);
-  const itensCart = [
-    {
-      id: "1",
-      image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin",
-      price: 2.0,
-    },
-    {
-      id: "2",
-      image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin 1",
-      price: 12.0,
-    },
-    {
-      id: "3",
-      image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin 2",
-      price: 13.43,
-    },
-    {
-      id: "4",
-      image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin 3",
-      price: 21.25,
-    },
-    {
-      id: "5",
-      image: "https://cf.shopee.com.br/file/d9f93981e1839c51ec55b3a6d05571fc",
-      title: "Ração Royal Canin 4",
-      price: 14.35,
-    },
-  ];
+  let soma = 0;
+  const { tempCart } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [sale, setSale] = useState({
     address: "",
@@ -47,20 +16,23 @@ export default function Cart() {
     city: "",
     state: "",
   });
-  //console.log(sale);
+
+  for (let i = 0; i < tempCart.length; i++) {
+    soma += tempCart[i].price * tempCart[i].qt;
+  }
 
   return (
     <>
       <Navbar />
       <ProdDataSty>
         <ProdSty>
-          {itensCart.map((d) => (
+          {tempCart.map((d, id) => (
             <CartList
-              key={d.id}
-              id={d.id}
+              key={id}
               image={d.image}
               title={d.title}
               price={d.price}
+              qt={d.qt}
             />
           ))}
         </ProdSty>
@@ -115,7 +87,7 @@ export default function Cart() {
                 }
                 value={sale.state}
               />
-              <h1>Valor Total: R$000.00</h1>
+              <h1>Valor Total: R${soma.toFixed(2)}</h1>
               <button>Finalizar Compra</button>
             </form>
           </div>
@@ -165,5 +137,16 @@ const ContainerData = styled.div`
     font-size: 24px;
     margin-top: 50px;
     margin-bottom: 25px;
+  }
+
+  button {
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    background: #404eed;
+    color: white;
+    font-family: "Nerko One";
+    font-size: 17px;
   }
 `;
