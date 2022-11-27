@@ -12,8 +12,6 @@ export default function Home() {
 
   const navigate = useNavigate()
 
-  const navigate = useNavigate()
-
   const [dogArray, setDogArray] = useState([])
   const [catArray, setCatArray] = useState([])
 
