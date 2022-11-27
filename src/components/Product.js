@@ -9,44 +9,38 @@ export function addToCart() {
 
 export function Product(props) {
   const { image, title, subtitle, price } = props;
-
   const [itemCounter, setItemCounter] = useState(0);
   const { tempCart, setTempCart } = React.useContext(AuthContext);
 
   function addProduct(image, title, price) {
     setItemCounter(itemCounter + 1);
-    
 
-    const exists = (element) => element.title=== title;
+    const exists = (element) => element.title === title;
 
-    if(tempCart.some(exists)){
-        console.log("já tem")
+    if (tempCart.length > 0 && tempCart.some(exists)) {
+      console.log("já tem");
 
+      setTempCart(
+        tempCart.map((obj) => {
+          if (obj.title === title) {
+            return { ...obj, qt: obj.qt + 1 };
+          }
 
-        
-    }else{
-        setTempCart([
-            ...tempCart,
-            {
-              image: image,
-              title: title,
-              price: price,
-              qt: 1,
-            },
-          ])
+          return obj;
+        })
+      )
+
+    } else {
+      setTempCart([
+        ...tempCart,
+        {
+          image: image,
+          title: title,
+          price: price,
+          qt: 1,
+        },
+      ]);
     }
-
-   
-
-
-
-
-// checks whether an element is even
-// const jatem = (element) => element.title=== title;
-
-// console.log(tempCart.some(jatem));
-// expected output: true
-
   }
 
   return (
