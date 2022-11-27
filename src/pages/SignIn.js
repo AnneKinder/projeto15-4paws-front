@@ -1,25 +1,29 @@
 import styled from "styled-components";
 import logo from "../assets/paw.print.webp";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import axios from "axios";
+import { AuthContext } from "../contexts/auth";
+import axios from "axios";
 
 export default function SignIn() {
   const navigate = useNavigate();
+  const { setToken, setUser } = useContext(AuthContext);
   const [loginUser, setLoginUser] = useState({ email: "", password: "" });
 
   function handleSignIn(e) {
     e.preventDefault();
 
-    /*axios
-      .post("http://localhost:5000/", loginUser);
-      .post(`${BASE_URI}/`, loginUser);
+    axios
+      .post("http://localhost:5000/", loginUser)
       .then((res) => {
+        console.log(res.data.token);
+        setToken(res.data.token);
+        setUser(res.data);
         navigate("/home");
       })
       .catch((err) => {
         alert(err.response.data.message);
-      });*/
+      });
   }
 
   return (
