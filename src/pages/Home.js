@@ -8,9 +8,15 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
-  const { tempCart } = React.useContext(AuthContext);
+  const { tempCart, token } = React.useContext(AuthContext);
 
   const navigate = useNavigate()
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
   const [dogArray, setDogArray] = useState([])
   const [catArray, setCatArray] = useState([])
@@ -18,8 +24,7 @@ export default function Home() {
   useEffect(() => {
     axios
       .get(
-        "http://localhost:5000/home"
-        // config
+        "http://localhost:5000/home", config
       )
       .then((res) => {
         setDogArray(res.data.dogProds);
