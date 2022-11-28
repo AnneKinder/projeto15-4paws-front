@@ -18,25 +18,10 @@ export default function Home() {
     },
   };
 
-  const [dogArray, setDogArray] = useState([
-    {
-      image:
-        "https://static.petnautasloja.com.br/public/nunesagropecuaria/imagens/produtos/thumbs/racao-guabi-natural-para-caes-adultos-racas-medias-sabor-frango-e-arroz-12kg-1kg-gratis-63766fbaa1ce1.jpg",
-      title: "Ração Royal Canin",
-      subtitle: "+ light",
-      price: 40.0,
-    },
-    {
-      image:
-        "https://static.petnautasloja.com.br/public/nunesagropecuaria/imagens/produtos/thumbs/comedouro-funcional-dog-lento-250ml-9962.png",
-      title: "Pote alto",
-      subtitle: "+ ergonomia",
-      price: 15.0,
-    },
-  ]);
+  const [dogArray, setDogArray] = useState([]);
   const [catArray, setCatArray] = useState([]);
 
-  /*useEffect(() => {
+  useEffect(() => {
     axios
       .get("http://localhost:5000/home", config)
       .then((res) => {
@@ -44,7 +29,7 @@ export default function Home() {
         setCatArray(res.data.catProds);
       })
       .catch((err) => console.log(err.response.data));
-  }, []);*/
+  }, []);
 
   function sendTempCart() {
     axios

@@ -62,6 +62,6 @@ input {
     border: 1px solid #d5d5d5;
     border-radius: 10px;
 }
-	`
+	`;
 
 export default GlobalStyle;
