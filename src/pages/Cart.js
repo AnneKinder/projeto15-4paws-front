@@ -3,12 +3,12 @@ import styled from "styled-components";
 import CartList from "../components/CartItens.js";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/auth.js";
+import axios from "axios";
 
 export default function Cart() {
   let soma = 0;
   const { tempCart } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
-
   const [sale, setSale] = useState({
     address: "",
     number: "",
@@ -20,7 +20,23 @@ export default function Cart() {
   for (let i = 0; i < tempCart.length; i++) {
     soma += tempCart[i].price * tempCart[i].qt;
   }
+  let total = soma.toFixed(2);
 
+  function finishOrder(total, tempCart, sale) {
+    let arrayCart = tempCart.concat({ totalPrice: total });
+    const formatData = { orderCart: arrayCart };
+    let purchaseOrder = Object.assign(formatData, { data: sale });
+    console.log(purchaseOrder);
+
+    axios
+      .post("http://localhost:5000/cart", purchaseOrder)
+      .then((res) => {
+        console.log("sucesso");
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
+  }
   return (
     <>
       <Navbar />
@@ -87,9 +103,11 @@ export default function Cart() {
                 }
                 value={sale.state}
               />
-              <h1>Valor Total: R${soma.toFixed(2)}</h1>
-              <button>Finalizar Compra</button>
+              <h1>Valor Total: R${total}</h1>
             </form>
+            <button onClick={() => finishOrder(total, tempCart, sale)}>
+              Finalizar Compra
+            </button>
           </div>
         </ContainerData>
       </ProdDataSty>
