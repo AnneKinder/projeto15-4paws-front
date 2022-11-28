@@ -34,7 +34,7 @@ export default function Home() {
   function sendTempCart() {
     axios
       .post(`http://localhost:5000/home`, tempCart)
-      .then(console.log(navigate("/cart")))
+      .then(navigate("/cart"))
       .catch((err) => console.log(err.response.data));
   }
 
