@@ -54,7 +54,7 @@ export default function SignIn() {
           <button type="submit">Entrar</button>
         </form>
         <p onClick={() => navigate("/sign-up")}>
-          Já tem uma conta? Entre agora!
+          Não tem uma conta? Cadastre agora!
         </p>
       </SignInSty>
       <SidebarSty>
