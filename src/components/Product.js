@@ -3,10 +3,6 @@ import styled from "styled-components";
 import { useState } from "react";
 import { AuthContext } from "../contexts/auth.js";
 
-export function addToCart() {
-  console.log("added to cart");
-}
-
 export function Product(props) {
   const { image, title, subtitle, price } = props;
   const [itemCounter, setItemCounter] = useState(0);
@@ -53,6 +49,7 @@ export function Product(props) {
 }
 
 const ProductSty = styled.div`
+  position: relative;
   box-sizing: border-box;
   width: 220px;
   height: 300px;
@@ -98,9 +95,11 @@ const ProductSty = styled.div`
     font-weight: 700;
     margin: 4px;
     cursor: pointer;
+    border: none;
   }
 
   .counter {
+    position: absolute;
     display: flex;
     width: 20px;
     border-radius: 10px;
@@ -109,7 +108,8 @@ const ProductSty = styled.div`
     font-size: 22px;
     justify-content: center;
     align-items: center;
-    margin-left: 178px;
+    margin-left: 190px;
+    margin-bottom: 295px;
     font-weight: 700;
   }
 `;

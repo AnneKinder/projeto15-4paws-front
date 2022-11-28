@@ -21,7 +21,6 @@ export default function SignUp() {
     if (form.password !== form.confirmp) {
       alert("As senhas não conferem. Por favor, redigite.");
     } else {
-
       axios
         .post(`http://localhost:5000/sign-up`, form)
         .then((res) => {

@@ -14,13 +14,15 @@ export default function Navbar() {
 
   return (
     <NavbarSty>
-      <div className="left">
-        <img
-          src="https://static.vecteezy.com/system/resources/previews/010/154/183/non_2x/animal-paw-print-icon-sign-design-free-png.png"
-          alt="logo"
-        />
-        <p>4PAWS</p>
-      </div>
+      <Link style={{ textDecoration: "none", color: "white" }} to="/home">
+        <div className="left">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/010/154/183/non_2x/animal-paw-print-icon-sign-design-free-png.png"
+            alt="logo"
+          />
+          <p>4PAWS</p>
+        </div>
+      </Link>
       <div className="right">
         <Link to="/home">
           <ion-icon name="home"></ion-icon>

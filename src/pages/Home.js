@@ -32,17 +32,14 @@ export default function Home() {
   }, []);
 
   function sendTempCart() {
-
-    if(tempCart.length===0){
-      alert("Adicione items para comprar!")
-    }else{
+    if (tempCart.length === 0) {
+      alert("Adicione items para comprar! ");
+    } else {
       axios
-      .post(`http://localhost:5000/home`, tempCart)
-      .then(navigate("/cart"))
-      .catch((err) => console.log(err.response.data));
+        .post(`http://localhost:5000/home`, tempCart)
+        .then(navigate("/cart"))
+        .catch((err) => console.log(err.response.data));
     }
-
-
   }
 
   return (

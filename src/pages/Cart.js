@@ -44,7 +44,6 @@ export default function Cart() {
       user: { email, name },
     });
     const verify = purchaseOrder.dataAddress;
-    console.log(arrayCart);
 
     if (arrayCart[0].totalPrice === "0,00") {
       alert("Coloque produto no carrinho! ");
@@ -55,17 +54,17 @@ export default function Cart() {
       verify.city === "" ||
       verify.state === ""
     ) {
-      alert("Digite todos os campos");
+      alert("Digite todos os campos! ");
     } else {
       axios
         .post(`http://localhost:5000/cart`, purchaseOrder)
         .then((res) => {
-          alert("Compra feita com sucesso!");
+          alert("Compra feita com sucesso! ");
           setTempCart([]);
           setSale({ address: "", number: "", cep: "", city: "", state: "" });
         })
         .catch((err) => {
-          alert(err.response.data.message);
+          console.log(err.response.data);
         });
     }
   }

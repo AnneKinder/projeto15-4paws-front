@@ -16,7 +16,6 @@ export default function SignIn() {
     axios
       .post(`http://localhost:5000/`, loginUser)
       .then((res) => {
-        console.log(res.data.token);
         setToken(res.data.token);
         setUser(res.data);
         navigate("/home");
