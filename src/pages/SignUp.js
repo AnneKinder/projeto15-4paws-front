@@ -6,8 +6,8 @@ import axios from "axios";
 import logo from "../assets/paw.print.webp";
 
 export default function SignUp() {
+  const URLPOST = "https://fourpaws-api.onrender.com/sign-up";
   const navigate = useNavigate();
-
   let [form, setForm] = useState({
     name: "",
     email: "",
@@ -22,7 +22,7 @@ export default function SignUp() {
       alert("As senhas não conferem. Por favor, redigite.");
     } else {
       axios
-        .post(`http://localhost:5000/sign-up`, form)
+        .post(`${URLPOST}`, form)
         .then((res) => {
           alert("Usuário criado");
           navigate("/");

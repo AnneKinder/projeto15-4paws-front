@@ -8,22 +8,21 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const URLGET = "https://fourpaws-api.onrender.com/home";
+  const URLPOST = "https://fourpaws-api.onrender.com/home";
   const { tempCart, token } = React.useContext(AuthContext);
-
   const navigate = useNavigate();
-
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-
   const [dogArray, setDogArray] = useState([]);
   const [catArray, setCatArray] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/home`, config)
+      .get(`${URLGET}`, config)
       .then((res) => {
         setDogArray(res.data.dogProds);
         setCatArray(res.data.catProds);
@@ -36,7 +35,7 @@ export default function Home() {
       alert("Adicione items para comprar! ");
     } else {
       axios
-        .post(`http://localhost:5000/home`, tempCart)
+        .post(`${URLPOST}`, tempCart)
         .then(navigate("/cart"))
         .catch((err) => console.log(err.response.data));
     }

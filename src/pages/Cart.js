@@ -7,6 +7,7 @@ import axios from "axios";
 
 export default function Cart() {
   let soma = 0;
+  const POSTURL = "https://fourpaws-api.onrender.com/cart";
   const { tempCart, setTempCart } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
   const { email, name } = user.userData;
@@ -57,7 +58,7 @@ export default function Cart() {
       alert("Digite todos os campos! ");
     } else {
       axios
-        .post(`http://localhost:5000/cart`, purchaseOrder)
+        .post(`${POSTURL}`, purchaseOrder)
         .then((res) => {
           alert("Compra feita com sucesso! ");
           setTempCart([]);
