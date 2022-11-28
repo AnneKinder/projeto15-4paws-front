@@ -71,6 +71,7 @@ const ContainerItem = styled.div`
 
   img {
     height: 90px;
+    width: 70px;
     margin: 10px;
     margin-right: 25px;
   }
