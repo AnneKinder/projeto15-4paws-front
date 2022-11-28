@@ -28,7 +28,7 @@ export default function Navbar() {
         <Link to="/cart">
           <ion-icon name="cart"></ion-icon>
         </Link>
-        <ion-icon onClick={() => logout(setToken)} name="power"></ion-icon>
+        <ion-icon name="power" onClick={() => logout(setToken)}></ion-icon>
       </div>
     </NavbarSty>
   );
@@ -65,7 +65,7 @@ const NavbarSty = styled.div`
 
   .right {
     display: flex;
-    align-items: center;
+
     width: 140px;
     justify-content: space-between;
     font-size: 35px;

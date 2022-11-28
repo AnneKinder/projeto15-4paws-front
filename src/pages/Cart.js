@@ -4,7 +4,6 @@ import CartList from "../components/CartItens.js";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/auth.js";
 import axios from "axios";
-import URL from "../URL.js";
 
 export default function Cart() {
   let soma = 0;
@@ -30,7 +29,7 @@ export default function Cart() {
     console.log(purchaseOrder);
 
     axios
-      .post(`${URL}/cart`, purchaseOrder)
+      .post(`http://localhost:5000/cart`, purchaseOrder)
       .then((res) => {
         console.log("sucesso");
       })
