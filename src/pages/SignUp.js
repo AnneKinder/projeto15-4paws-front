@@ -22,9 +22,6 @@ export default function SignUp() {
       alert("As senhas não conferem. Por favor, redigite.");
     } else {
 
-      alert("Usuário criado :)")
-
-
       axios.post("http://localhost:5000/sign-up", form)
         .then((res) => {
           alert("Usuário criado");
