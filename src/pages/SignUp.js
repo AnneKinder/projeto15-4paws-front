@@ -21,10 +21,9 @@ export default function SignUp() {
     if (form.password !== form.confirmp) {
       alert("As senhas não conferem. Por favor, redigite.");
     } else {
-      alert("Usuário criado :)");
 
       axios
-        .post("http://localhost:5000/sign-up", form)
+        .post("https://fourpaws-api.onrender.com/sign-up", form)
         .then((res) => {
           alert("Usuário criado");
           navigate("/");

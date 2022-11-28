@@ -29,7 +29,7 @@ export default function Cart() {
     console.log(purchaseOrder);
 
     axios
-      .post("http://localhost:5000/cart", purchaseOrder)
+      .post("https://fourpaws-api.onrender.com/cart", purchaseOrder)
       .then((res) => {
         console.log("sucesso");
       })

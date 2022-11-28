@@ -33,7 +33,7 @@ export default function Home() {
 
   function sendTempCart() {
     axios
-      .post("http://localhost:5000/home", tempCart)
+      .post("https://fourpaws-api.onrender.com/home", tempCart)
       .then(console.log(navigate("/cart")))
       .catch((err) => console.log(err.response.data));
   }
