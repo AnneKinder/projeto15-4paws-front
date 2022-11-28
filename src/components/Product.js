@@ -18,7 +18,6 @@ export function Product(props) {
     const exists = (element) => element.title === title;
 
     if (tempCart.length > 0 && tempCart.some(exists)) {
-
       setTempCart(
         tempCart.map((obj) => {
           if (obj.title === title) {

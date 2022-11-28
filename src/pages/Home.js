@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../contexts/auth.js";
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const { tempCart, token } = React.useContext(AuthContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const config = {
     headers: {
@@ -18,14 +18,12 @@ export default function Home() {
     },
   };
 
-  const [dogArray, setDogArray] = useState([])
-  const [catArray, setCatArray] = useState([])
+  const [dogArray, setDogArray] = useState([]);
+  const [catArray, setCatArray] = useState([]);
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost:5000/home", config
-      )
+      .get("http://localhost:5000/home", config)
       .then((res) => {
         setDogArray(res.data.dogProds);
         setCatArray(res.data.catProds);
@@ -33,21 +31,18 @@ export default function Home() {
       .catch((err) => console.log(err.response.data));
   }, []);
 
-
-  function sendTempCart(){
-    axios.post("http://localhost:5000/home", tempCart)
+  function sendTempCart() {
+    axios
+      .post("http://localhost:5000/home", tempCart)
       .then(console.log(navigate("/cart")))
-      .catch((err)=> console.log(err.response.data))
-
-
-
+      .catch((err) => console.log(err.response.data));
   }
 
   return (
     <>
       <Navbar />
       <HomeSty>
-        <GoCart onClick={()=>sendTempCart()}>COMPRAR!</GoCart>
+        <GoCart onClick={() => sendTempCart()}>COMPRAR!</GoCart>
         <div className="subtitle">
           <h2> Doguinhos </h2>
         </div>

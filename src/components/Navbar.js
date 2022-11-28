@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { AuthContext } from "../contexts/auth";
 
 export default function Navbar() {
+  const { setToken } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  function logout(setToken) {
+    setToken("");
+    navigate("/");
+  }
 
   return (
     <NavbarSty>
@@ -19,9 +28,7 @@ export default function Navbar() {
         <Link to="/cart">
           <ion-icon name="cart"></ion-icon>
         </Link>
-        <Link to="/">
-          <ion-icon name="power"></ion-icon>
-        </Link>
+        <ion-icon onClick={() => logout(setToken)} name="power"></ion-icon>
       </div>
     </NavbarSty>
   );
@@ -43,7 +50,7 @@ const NavbarSty = styled.div`
   line-height: 39px;
   color: #fcfcfc;
   z-index: 1;
-  
+
   img {
     height: 65px;
     width: 65px;
