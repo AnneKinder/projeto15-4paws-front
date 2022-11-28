@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../assets/paw.print.webp";
+import URL from "../URL.js";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function SignUp() {
     } else {
 
       axios
-        .post("https://fourpaws-api.onrender.com/sign-up", form)
+        .post(`${URL}/sign-up`, form)
         .then((res) => {
           alert("Usuário criado");
           navigate("/");

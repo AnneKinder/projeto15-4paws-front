@@ -6,6 +6,7 @@ import axios from "axios";
 import { AuthContext } from "../contexts/auth.js";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import URL from "../URL.js";
 
 export default function Home() {
   const { tempCart, token } = React.useContext(AuthContext);
@@ -23,7 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/home", config)
+      .get(`${URL}/home`, config)
       .then((res) => {
         setDogArray(res.data.dogProds);
         setCatArray(res.data.catProds);
@@ -33,7 +34,7 @@ export default function Home() {
 
   function sendTempCart() {
     axios
-      .post("https://fourpaws-api.onrender.com/home", tempCart)
+      .post(`${URL}/home`, tempCart)
       .then(console.log(navigate("/cart")))
       .catch((err) => console.log(err.response.data));
   }

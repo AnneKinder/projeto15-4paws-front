@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth";
 import axios from "axios";
+import URL from "../URL.js";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function SignIn() {
     e.preventDefault();
 
     axios
-      .post("https://fourpaws-api.onrender.com/", loginUser)
+      .post(`${URL}`, loginUser)
       .then((res) => {
         console.log(res.data.token);
         setToken(res.data.token);
