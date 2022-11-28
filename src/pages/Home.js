@@ -32,10 +32,17 @@ export default function Home() {
   }, []);
 
   function sendTempCart() {
-    axios
+
+    if(tempCart.length===0){
+      alert("Adicione items para comprar!")
+    }else{
+      axios
       .post(`http://localhost:5000/home`, tempCart)
-      .then(console.log(navigate("/cart")))
+      .then(navigate("/cart"))
       .catch((err) => console.log(err.response.data));
+    }
+
+
   }
 
   return (
